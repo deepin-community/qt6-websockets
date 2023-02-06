@@ -3,27 +3,28 @@ Section: libs
 Priority: optional
 Maintainer: Deepin Developer <deepin-dev@deepin.org>
 Uploaders: Deepin Packages Builder <packages@deepin.org>
-Build-Depends: cmake (>= 3.18~),
+Build-Depends: cmake (>= 3.24~),
                debhelper-compat (= 13),
                libgl-dev,
-               libqt6opengl6-dev (>= 6.2.4~),
+               libqt6opengl6-dev (>= 6.4.2~),
                libssl-dev,
                libvulkan-dev [linux-any],
                libxcb-xkb-dev,
                ninja-build,
                pkg-config,
                pkg-kde-tools,
-               qml6-module-qtquick (>= 6.2.4~),
-               qml6-module-qttest (>= 6.2.4~),
-               qt6-base-dev (>= 6.2.4~),
-               qt6-base-private-dev (>= 6.2.4~),
-               qt6-declarative-dev (>= 6.2.4~),
-               qt6-declarative-private-dev (>= 6.2.4~),
+               qml6-module-qtquick (>= 6.4.2~),
+               qml6-module-qttest (>= 6.4.2~),
+               qt6-base-dev (>= 6.4.2~),
+               qt6-base-private-dev (>= 6.4.2~),
+               qt6-declarative-dev (>= 6.4.2~),
+               qt6-declarative-private-dev (>= 6.4.2~),
 Standards-Version: 4.6.0
 Homepage: https://www.qt.io/developers/
 Rules-Requires-Root: no
 
 Package: libqt6websockets6
+Provides: qt6-websockets-abi (= 6.4.2)
 Architecture: any
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}
@@ -46,14 +47,31 @@ Description: Qt 6 WebSockets QML module
  .
  This package contains the Qt Web Sockets QML module.
 
-Package: libqt6websockets6-dev
+Package: qt6-websockets-dev
+Provides: libqt6websockets6-dev (= ${binary:Version})
 Architecture: any
 Multi-Arch: same
 Section: libdevel
 Depends: libqt6websockets6 (= ${binary:Version}), qt6-base-dev, ${misc:Depends}
+Breaks: libqt6websockets6-dev (<< 6.2.4.1~)
+Replaces: libqt6websockets6-dev (<< 6.2.4.1~)
 Description: Qt 6 WebSockets library - development files
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
  .
  This package contains the development files needed to build Qt applications
  using Qt 6 WebSockets library.
+
+Package: qt6-websockets-private-dev
+Architecture: any
+Multi-Arch: same
+Section: libdevel
+Depends: qt6-websockets-dev (= ${binary:Version}), ${misc:Depends}
+Description: Qt 6 WebSockets library - private development files
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the private development header files needed
+ to build Qt applications using Qt 6 WebSockets library.
+ .
+ Use at your own risk.

@@ -1,0 +1,2 @@
+usr/include/${DEB_HOST_MULTIARCH}/qt6/QtWebSockets/6.*/QtWebSockets/private/*_p.h
+usr/lib/${DEB_HOST_MULTIARCH}/qt6/mkspecs/modules/qt_lib_websockets_private.pri
