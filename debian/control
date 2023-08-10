@@ -1,33 +1,37 @@
 Source: qt6-websockets
 Section: libs
 Priority: optional
-Maintainer: Deepin Developer <deepin-dev@deepin.org>
-Uploaders: Deepin Packages Builder <packages@deepin.org>
-Build-Depends: cmake (>= 3.18~),
+Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Patrick Franz <deltaone@debian.org>,
+Build-Depends: cmake (>= 3.24~),
                debhelper-compat (= 13),
                libgl-dev,
-               libqt6opengl6-dev (>= 6.2.4~),
                libssl-dev,
                libvulkan-dev [linux-any],
                libxcb-xkb-dev,
                ninja-build,
                pkg-config,
                pkg-kde-tools,
-               qml6-module-qtquick (>= 6.2.4~),
-               qml6-module-qttest (>= 6.2.4~),
-               qt6-base-dev (>= 6.2.4~),
-               qt6-base-private-dev (>= 6.2.4~),
-               qt6-declarative-dev (>= 6.2.4~),
-               qt6-declarative-private-dev (>= 6.2.4~),
-Standards-Version: 4.6.0
+               qml6-module-qtquick (>= 6.4.2+dfsg~),
+               qml6-module-qttest (>= 6.4.2+dfsg~),
+               qt6-base-dev (>= 6.4.2+dfsg~),
+               qt6-base-private-dev (>= 6.4.2+dfsg~),
+               qt6-declarative-dev (>= 6.4.2+dfsg~),
+               qt6-declarative-private-dev (>= 6.4.2+dfsg~),
+Build-Depends-Indep: qt6-base-dev (>= 6.4~) <!nodoc>,
+                     qt6-documentation-tools (>= 6.4~) <!nodoc>,
+Standards-Version: 4.6.2
 Homepage: https://www.qt.io/developers/
+Vcs-Browser: https://salsa.debian.org/qt-kde-team/qt6/qt6-websockets
+Vcs-Git: https://salsa.debian.org/qt-kde-team/qt6/qt6-websockets.git
 Rules-Requires-Root: no
 
 Package: libqt6websockets6
+Provides: qt6-websockets-abi (= 6.4.2),
 Architecture: any
 Multi-Arch: same
-Pre-Depends: ${misc:Pre-Depends}
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends},
+Depends: ${misc:Depends}, ${shlibs:Depends},
 Description: Qt 6 WebSockets library
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
@@ -38,22 +42,84 @@ Description: Qt 6 WebSockets library
 Package: qml6-module-qtwebsockets
 Architecture: any
 Multi-Arch: same
-Pre-Depends: ${misc:Pre-Depends}
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends},
+Depends: ${misc:Depends}, ${shlibs:Depends},
 Description: Qt 6 WebSockets QML module
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
  .
  This package contains the Qt Web Sockets QML module.
 
-Package: libqt6websockets6-dev
+Package: qt6-websockets-dev
+Provides: libqt6websockets6-dev (= ${binary:Version}),
 Architecture: any
 Multi-Arch: same
 Section: libdevel
-Depends: libqt6websockets6 (= ${binary:Version}), qt6-base-dev, ${misc:Depends}
+Depends: libqt6websockets6 (= ${binary:Version}), qt6-base-dev, ${misc:Depends},
+Breaks: libqt6websockets6-dev (<< 6.4.0-2~),
+Replaces: libqt6websockets6-dev (<< 6.4.0-2~),
 Description: Qt 6 WebSockets library - development files
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
  .
  This package contains the development files needed to build Qt applications
  using Qt 6 WebSockets library.
+
+Package: qt6-websockets-private-dev
+Architecture: any
+Multi-Arch: same
+Section: libdevel
+Depends: qt6-websockets-dev (= ${binary:Version}), ${misc:Depends},
+Description: Qt 6 WebSockets library - private development files
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the private development header files needed
+ to build Qt applications using Qt 6 WebSockets library.
+ .
+ Use at your own risk.
+
+Package: qt6-websockets-doc
+Architecture: all
+Section: doc
+Depends: qt6-base-doc, ${misc:Depends},
+Multi-Arch: foreign
+Description: Qt 6 web sockets documentation
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the documentation for the Qt 6 web sockets.
+
+Package: qt6-websockets-doc-html
+Architecture: all
+Section: doc
+Depends: qt6-base-doc-html, ${misc:Depends},
+Multi-Arch: foreign
+Description: Qt 6 web sockets HTML documentation
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the HTML documentation for the Qt 6 web sockets.
+
+Package: qt6-websockets-doc-dev
+Architecture: all
+Section: libdevel
+Depends: qt6-base-doc-dev, ${misc:Depends},
+Multi-Arch: foreign
+Description: Qt 6 websockets tags files
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the doxygen tags files for the qt web sockets
+ documentation.
+
+Package: qt6-websockets-examples
+Architecture: any
+Multi-Arch: same
+Section: misc
+Depends: ${misc:Depends}, ${shlibs:Depends},
+Description: Qt 6 web sockets examples
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the examples for the Qt web sockets submodule.

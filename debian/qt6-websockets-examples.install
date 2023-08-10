@@ -1,0 +1,7 @@
+usr/lib/${DEB_HOST_MULTIARCH}/qt6/examples/websockets/echoclient/echoclient
+usr/lib/${DEB_HOST_MULTIARCH}/qt6/examples/websockets/echoserver/echoserver
+usr/lib/${DEB_HOST_MULTIARCH}/qt6/examples/websockets/qmlwebsocketclient/qmlwebsocketclient
+usr/lib/${DEB_HOST_MULTIARCH}/qt6/examples/websockets/qmlwebsocketserver/qmlwebsocketserver
+usr/lib/${DEB_HOST_MULTIARCH}/qt6/examples/websockets/simplechat/simplechatserver
+usr/lib/${DEB_HOST_MULTIARCH}/qt6/examples/websockets/sslechoclient/sslechoclient
+usr/lib/${DEB_HOST_MULTIARCH}/qt6/examples/websockets/sslechoserver/sslechoserver
