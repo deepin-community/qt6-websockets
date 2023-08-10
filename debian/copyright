@@ -7,7 +7,7 @@ Copyright: 2016 Kurt Pattyn <pattyn.kurt@gmail.com>
 License: LGPL-3 or GPL-2
 
 Files: debian/*
-Copyright: 2021 Patrick Franz <deltaone@debian.org>
+Copyright: 2022 Patrick Franz <deltaone@debian.org>
 License: LGPL-3 or GPL-2
 
 Files: src/websockets/qwebsocket_wasm_p.cpp

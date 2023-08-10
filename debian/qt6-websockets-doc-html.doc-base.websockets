@@ -1,0 +1,9 @@
+Document: qt6-websockets-manual
+Title: Qt 6 web sockets
+Author: The Qt Company Ltd
+Abstract: This is the HTML documentation for Qt 6 web sockets
+Section: Programming/C++
+
+Format: HTML
+Index: /usr/share/doc/qt6-websockets-doc-html/html/qtwebsockets/qtwebsockets-index.html
+Files: /usr/share/doc/qt6-websockets-doc-html/html/qtwebsockets/*.html
