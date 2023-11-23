@@ -1,3 +1,23 @@
+qt6-websockets (6.6.0-2) experimental; urgency=medium
+
+  [ Patrick Franz ]
+  * Update symbols from buildlogs.
+
+ -- Patrick Franz <deltaone@debian.org>  Tue, 14 Nov 2023 13:13:39 +0100
+
+qt6-websockets (6.6.0-1) experimental; urgency=medium
+
+  [ Patrick Franz ]
+  * New upstream release (6.6.0).
+  * Bump Qt B-Ds to 6.6.0.
+  * Update ABI to 6.6.0.
+  * Rename the virtual ABI package to qt6-websockets-private-abi.
+  * Update list of installed files.
+  * Update symbols from buildlogs.
+  * Use the (symver) directive to catch all private symbols.
+
+ -- Patrick Franz <deltaone@debian.org>  Mon, 13 Nov 2023 22:25:18 +0100
+
 qt6-websockets (6.4.2-3) unstable; urgency=medium
 
   * Team upload to unstable.

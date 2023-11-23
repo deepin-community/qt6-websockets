@@ -12,14 +12,12 @@ Build-Depends: cmake (>= 3.24~),
                ninja-build,
                pkg-config,
                pkg-kde-tools,
-               qml6-module-qtquick (>= 6.4.2+dfsg~),
-               qml6-module-qttest (>= 6.4.2+dfsg~),
-               qt6-base-dev (>= 6.4.2+dfsg~),
-               qt6-base-private-dev (>= 6.4.2+dfsg~),
-               qt6-declarative-dev (>= 6.4.2+dfsg~),
-               qt6-declarative-private-dev (>= 6.4.2+dfsg~),
-Build-Depends-Indep: qt6-base-dev (>= 6.4~) <!nodoc>,
-                     qt6-documentation-tools (>= 6.4~) <!nodoc>,
+               qt6-base-dev (>= 6.6.0+dfsg~),
+               qt6-base-private-dev (>= 6.6.0+dfsg~),
+               qt6-declarative-dev (>= 6.6.0+dfsg~),
+               qt6-declarative-private-dev (>= 6.6.0+dfsg~),
+Build-Depends-Indep: qt6-base-dev (>= 6.6~) <!nodoc>,
+                     qt6-documentation-tools (>= 6.6~) <!nodoc>,
 Standards-Version: 4.6.2
 Homepage: https://www.qt.io/developers/
 Vcs-Browser: https://salsa.debian.org/qt-kde-team/qt6/qt6-websockets
@@ -27,7 +25,7 @@ Vcs-Git: https://salsa.debian.org/qt-kde-team/qt6/qt6-websockets.git
 Rules-Requires-Root: no
 
 Package: libqt6websockets6
-Provides: qt6-websockets-abi (= 6.4.2),
+Provides: qt6-websockets-private-abi (= 6.6.0),
 Architecture: any
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends},

@@ -27,7 +27,7 @@ usr/lib/${DEB_HOST_MULTIARCH}/cmake/Qt6WebSockets/Qt6WebSocketsTargets.cmake
 usr/lib/${DEB_HOST_MULTIARCH}/cmake/Qt6WebSockets/Qt6WebSocketsVersionlessTargets.cmake
 usr/lib/${DEB_HOST_MULTIARCH}/libQt6WebSockets.prl
 usr/lib/${DEB_HOST_MULTIARCH}/libQt6WebSockets.so
-usr/lib/${DEB_HOST_MULTIARCH}/metatypes/qt6websockets_none_metatypes.json
 usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/Qt6WebSockets.pc
+usr/lib/${DEB_HOST_MULTIARCH}/qt6/metatypes/qt6websockets_none_metatypes.json
 usr/lib/${DEB_HOST_MULTIARCH}/qt6/mkspecs/modules/qt_lib_websockets.pri
-usr/share/qt6/modules/WebSockets.json
+usr/lib/${DEB_HOST_MULTIARCH}/qt6/modules/WebSockets.json
