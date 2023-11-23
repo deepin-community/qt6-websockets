@@ -40,7 +40,7 @@
 */
 
 /*!
-    \page echoclient.html example
+    \page echoclient.html
     \title QWebSocket client example
     \brief A sample WebSocket client that sends a message and displays the message that
     it receives back.
@@ -98,6 +98,27 @@ not been filled in with new information when the signal returns.
 
 \sa QAuthenticator, QNetworkProxy
 */
+
+/*!
+    \fn void QWebSocket::authenticationRequired(QAuthenticator *authenticator)
+    \since 6.6
+
+    This signal is emitted when the server requires authentication.
+    The \a authenticator object must then be filled in with the required details
+    to allow authentication and continue the connection.
+
+    If you know that the server may require authentication, you can set the
+    username and password on the initial QUrl, using QUrl::setUserName and
+    QUrl::setPassword. QWebSocket will still try to connect \e{once} without
+    using the provided credentials.
+
+    \note It is not possible to use a QueuedConnection to connect to
+    this signal, as the connection will fail if the authenticator has
+    not been filled in with new information when the signal returns.
+
+    \sa QAuthenticator
+*/
+
 /*!
     \fn void QWebSocket::stateChanged(QAbstractSocket::SocketState state);
 
@@ -170,18 +191,6 @@ not been filled in with new information when the signal returns.
     received bytes.
 
     \sa textMessageReceived()
-*/
-/*!
-    \fn void QWebSocket::error(QAbstractSocket::SocketError error);
-
-    This signal is emitted after an error occurred. The \a error
-    parameter describes the type of error that occurred.
-
-    QAbstractSocket::SocketError is not a registered metatype, so for queued
-    connections, you will have to register it with Q_DECLARE_METATYPE() and
-    qRegisterMetaType().
-
-    \sa error(), errorString()
 */
 /*!
     \fn void QWebSocket::sslErrors(const QList<QSslError> &errors)
@@ -995,5 +1004,26 @@ quint64 QWebSocket::maxOutgoingFrameSize()
 {
     return QWebSocketPrivate::maxOutgoingFrameSize();
 }
+
+/*!
+    \fn void QWebSocket::errorOccurred(QAbstractSocket::SocketError error);
+
+    \since 6.5
+    \brief This signal is emitted after an error occurred.
+
+    The \a error parameter describes the type of error that occurred.
+
+    QAbstractSocket::SocketError is not a registered metatype, so for queued
+    connections, you will have to register it with Q_DECLARE_METATYPE() and
+    qRegisterMetaType().
+
+    \sa error(), errorString()
+*/
+#if QT_DEPRECATED_SINCE(6, 5)
+/*!
+    \fn void QWebSocket::error(QAbstractSocket::SocketError error);
+    \deprecated [6.5] Use errorOccurred(QAbstractSocket::SocketError error) instead.
+*/
+#endif
 
 QT_END_NAMESPACE

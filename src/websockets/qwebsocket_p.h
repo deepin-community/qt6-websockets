@@ -20,6 +20,7 @@
 #ifndef QT_NO_NETWORKPROXY
 #include <QtNetwork/QNetworkProxy>
 #endif
+#include <QtNetwork/QAuthenticator>
 #ifndef QT_NO_SSL
 #include <QtNetwork/QSslConfiguration>
 #include <QtNetwork/QSslError>
@@ -74,6 +75,12 @@ public:
     explicit QWebSocketPrivate(const QString &origin,
                                QWebSocketProtocol::Version version);
     ~QWebSocketPrivate() override;
+
+    // both constants are taken from the default settings of Apache
+    // see: http://httpd.apache.org/docs/2.2/mod/core.html#limitrequestfieldsize and
+    // http://httpd.apache.org/docs/2.2/mod/core.html#limitrequestfields
+    static constexpr int MAX_HEADERLINE_LENGTH = 8 * 1024; // maximum length of a http request header line
+    static constexpr int MAX_HEADERLINES = 100;            // maximum number of http request header lines
 
     void init();
     void abort();
@@ -189,6 +196,7 @@ private:
     QByteArray generateKey() const;
     Q_REQUIRED_RESULT qint64 writeFrames(const QList<QByteArray> &frames);
     Q_REQUIRED_RESULT qint64 writeFrame(const QByteArray &frame);
+    void emitErrorOccurred(QAbstractSocket::SocketError error);
 
     QTcpSocket *m_pSocket;
     QString m_errorString;
@@ -204,12 +212,21 @@ private:
     QAbstractSocket::PauseModes m_pauseMode;
     qint64 m_readBufferSize;
 
+    // For WWW-Authenticate handling
+    QAuthenticator m_authenticator;
+    qint64 m_bytesToSkipBeforeNewResponse = 0;
+
     QByteArray m_key;	//identification key used in handshake requests
 
     bool m_mustMask;	//a server must not mask the frames it sends
 
     bool m_isClosingHandshakeSent;
     bool m_isClosingHandshakeReceived;
+
+    // For WWW-Authenticate handling
+    bool m_needsResendWithCredentials = false;
+    bool m_needsReconnect = false;
+
     QWebSocketProtocol::CloseCode m_closeCode;
     QString m_closeReason;
 
