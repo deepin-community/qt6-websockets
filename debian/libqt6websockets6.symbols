@@ -1,5 +1,5 @@
 # SymbolsHelper-Confirmed: 6.6.0 amd64 armel armhf hppa i386 powerpc sh4
-libQt6WebSockets.so.6 libqt6websockets6 #MINVER#, qt6-websockets-private-abi (= 6.6.0)
+libQt6WebSockets.so.6 libqt6websockets6 #MINVER#, qt6-websockets-private-abi (= 6.6.1)
 * Build-Depends-Package: qt6-websockets-dev
  Qt_6@Qt_6 6.6.0
  (symver)Qt_6_PRIVATE_API 0
