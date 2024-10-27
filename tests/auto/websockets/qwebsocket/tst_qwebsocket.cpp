@@ -1,5 +1,5 @@
 // Copyright (C) 2016 Kurt Pattyn <pattyn.kurt@gmail.com>.
-// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
 #include <QRegularExpression>
 #include <QString>
 #include <QtTest>
@@ -693,6 +693,7 @@ void tst_QWebSocket::tst_openRequest()
 
     QUrl url = QUrl(QStringLiteral("ws://") + echoServer.hostAddress().toString() +
                     QLatin1Char(':') + QString::number(echoServer.port()));
+    url.setPath(QLatin1String("/"));
     QUrlQuery query;
     query.addQueryItem("queryitem", "with encoded characters");
     url.setQuery(query);
@@ -1025,7 +1026,7 @@ public:
 
         socket->write(payload);
         if (withConnectionClose)
-            socket->disconnectFromHost();
+            socket->close();
     }
 
     static QLatin1StringView getHeaderValue(const QLatin1StringView keyHeader,
@@ -1360,7 +1361,7 @@ void tst_QWebSocket::customHeader()
         QVERIFY(serverSocketSpy.wait());
         data.append(serverSocket->readAll());
     }
-    QVERIFY(data.contains("CustomHeader: Example"));
+    QVERIFY(QLatin1StringView(data).contains("CustomHeader: Example"_L1, Qt::CaseInsensitive));
     const auto view = QLatin1String(data);
     const auto keyHeader = QLatin1String("Sec-WebSocket-Key:");
     const qsizetype keyStart = view.indexOf(keyHeader, 0, Qt::CaseInsensitive) + keyHeader.size();
