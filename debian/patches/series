@@ -1,0 +1,5 @@
+
+
+# CVE-2026-114369 WebSocket handshake DoS (resource exhaustion, backport from qt/qtwebsockets 6.9)
+CVE-2026-114369_qwebsocket-fix-quadratic-copy-and-scan-during-pre-handshak.patch
+CVE-2026-114369_qwebsocketserver-fix-quadratic-copy-and-scan-during-pre-ha.patch
