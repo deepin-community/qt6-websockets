@@ -1,3 +1,9 @@
+qt6-websockets (6.8.0-0deepin3) unstable; urgency=medium
+
+  * Add CVE-2026-114369 security patches.
+
+ -- zhanghongyuan <zhanghongyuan@uniontech.com>  Tue, 17 Nov 2026 22:21:21 +0800
+
 qt6-websockets (6.8.0-0deepin2) unstable; urgency=medium
 
   * Add CVE-2026-114369 security patches.
